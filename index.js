@@ -3,7 +3,16 @@ const app = require('electron').app;
 const shell = require('electron').shell;
 const BrowserWindow = require('electron').BrowserWindow;
 const Menu = require('electron').Menu;
+const Configstore = require('configstore');
+const objectAssign = require('object-assign');
+const pkg = require('./package.json');
 require('electron-debug')();
+
+const conf = new Configstore(pkg.name, {
+  height: 768,
+  width: 1024,
+  fullscreen: false
+});
 
 let mainWindow;
 
@@ -25,9 +34,8 @@ app.on('ready', () => {
 });
 
 function createMainWindow() {
-  const opts = {
-    height: 768,
-    width: 1024,
+  const defaults = {
+    fullscreenable: true,
     minWidth: 615,
     icon: `${__dirname}/assets/icon.png`,
     preload: `${__dirname}/browser.js`,
@@ -35,10 +43,24 @@ function createMainWindow() {
     titleBarStyle: 'hidden-inset'
   };
 
+  const opts = objectAssign(defaults, conf.all);
   const mainWindow = new BrowserWindow(opts);
   mainWindow.loadURL('https://keep.google.com');
+  mainWindow.on('resize', handleResize);
   mainWindow.on('closed', handleClosed);
   return mainWindow;
+}
+
+function handleResize() {
+  const isMaximized = mainWindow.isMaximized();
+  const bounds = mainWindow.getBounds();
+
+  if (!isMaximized) {
+    conf.set('height', bounds.height);
+    conf.set('width', bounds.width);
+  }
+
+  conf.set('fullscreen', isMaximized);
 }
 
 function handleClosed() {
