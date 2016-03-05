@@ -1,5 +1,8 @@
 'use strict';
+const ipc = require('electron').ipcRenderer;
+
 window.addEventListener('DOMContentLoaded', handleLoad, false);
+ipc.on('navigate', handleNavigate);
 
 function handleLoad() {
   if (!isKeep()) return;
@@ -33,4 +36,8 @@ function handleLoad() {
 
 function isKeep() {
   return window.location.hostname === 'keep.google.com';
+}
+
+function handleNavigate(event, hash) {
+  window.location.hash = hash;
 }
