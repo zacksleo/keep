@@ -1,10 +1,10 @@
 'use strict';
 const ipc = require('electron').ipcRenderer;
 
-window.addEventListener('DOMContentLoaded', handleLoad, false);
+window.addEventListener('DOMContentLoaded', handleDOMLoaded, false);
 ipc.on('navigate', handleNavigate);
 
-function handleLoad() {
+function handleDOMLoaded() {
   if (!isKeep()) return;
   const searchContainer = document.querySelector('.gb_Xd');
   const accountContainer = document.querySelector('.gb_9a');
@@ -32,6 +32,12 @@ function handleLoad() {
   elements.forEach(element => {
     element.remove();
   });
+
+  document.styleSheets[0].insertRule(`
+    ::-webkit-scrollbar {
+      display: none !important;
+    }
+  `, 0);
 }
 
 function isKeep() {
