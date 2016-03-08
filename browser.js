@@ -6,7 +6,7 @@ ipc.on('navigate', handleNavigate);
 
 function handleDOMLoaded() {
   if (!isKeep()) return;
-  const searchContainer = document.querySelector('.gb_Xd');
+  const searchContainer = document.querySelector('.gb_0d');
   const accountContainer = document.querySelector('.gb_9a');
   const faceContainer = document.querySelector('.gb_6a');
   const faceAnchor = document.querySelector('.gb_4a');
