@@ -10,8 +10,7 @@ require('electron-debug')();
 
 const conf = new Configstore(pkg.name, {
   height: 768,
-  width: 1024,
-  fullscreen: false
+  width: 1024
 });
 
 let mainWindow;
@@ -35,7 +34,6 @@ app.on('ready', () => {
 
 function createMainWindow() {
   const defaults = {
-    fullscreenable: true,
     minWidth: 615,
     icon: `${__dirname}/assets/icon.png`,
     preload: `${__dirname}/browser.js`,
@@ -52,15 +50,16 @@ function createMainWindow() {
 }
 
 function handleResize() {
-  const isMaximized = mainWindow.isMaximized();
+  const isFullScreen = mainWindow.isFullScreen();
   const bounds = mainWindow.getBounds();
 
-  if (!isMaximized) {
+  if (isFullScreen) {
+    conf.set('fullscreen', true);
+  } else {
     conf.set('height', bounds.height);
     conf.set('width', bounds.width);
+    conf.del('fullscreen');
   }
-
-  conf.set('fullscreen', isMaximized);
 }
 
 function handleClosed() {
