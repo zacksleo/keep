@@ -87,6 +87,31 @@ function createMenu() {
       ]
     },
     {
+      label: 'Edit',
+      submenu: [
+        {
+          label: 'Cut',
+          accelerator: 'Cmd+X',
+          selector: 'cut:'
+        },
+        {
+          label: 'Copy',
+          accelerator: 'Cmd+C',
+          selector: 'copy:'
+        },
+        {
+          label: 'Paste',
+          accelerator: 'Cmd+V',
+          selector: 'paste:'
+        },
+        {
+          label: 'Select All',
+          accelerator: 'Cmd+A',
+          selector: 'selectAll:'
+        }
+      ]
+    },
+    {
       label: 'View',
       submenu: [
         {
