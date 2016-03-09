@@ -72,14 +72,34 @@ function createMenu() {
     {
       label: 'Keep',
       submenu: [
-        { label: 'Services', role: 'services', submenu: [] },
-        { type: 'separator' },
-        { label: 'Hide Keep', accelerator: 'Command+H', role: 'hide' },
-        { label: 'Hide Others', accelerator: 'Command+Alt+H', role: 'hideothers' },
-        { label: 'Show All', role: 'unhide' },
-        { type: 'separator' },
-        { label: 'Quit',
-          accelerator: 'Command+Q',
+        {
+          label: 'Services',
+          role: 'services',
+          submenu: []
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Hide Keep',
+          accelerator: 'Cmd+H',
+          role: 'hide'
+        },
+        {
+          label: 'Hide Others',
+          accelerator: 'Alt+Cmd+H',
+          role: 'hideothers'
+        },
+        {
+          label: 'Show All',
+          role: 'unhide'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Quit',
+          accelerator: 'Cmd+Q',
           click: () => {
             app.quit();
           }
@@ -89,29 +109,39 @@ function createMenu() {
     {
       label: 'Edit',
       submenu: [
-        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', role: 'undo' },
-        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', role: 'redo' },
-        { type: 'separator' },
+        {
+          label: 'Undo',
+          accelerator: 'CmdOrCtrl+Z',
+          role: 'undo'
+        },
+        {
+          label: 'Redo',
+          accelerator:'Shift+CmdOrCtrl+Z',
+          role: 'redo'
+        },
+        {
+          type: 'separator'
+        },
         {
           label: 'Cut',
-          accelerator: 'Cmd+X',
-          selector: 'cut:'
+          accelerator: 'CmdOrCtrl+X',
+          role: 'cut'
         },
         {
           label: 'Copy',
-          accelerator: 'Cmd+C',
-          selector: 'copy:'
+          accelerator: 'CmdOrCtrl+C',
+          role: 'copy'
         },
         {
           label: 'Paste',
-          accelerator: 'Cmd+V',
-          selector: 'paste:'
+          accelerator: 'CmdOrCtrl+V',
+          role: 'paste'
         },
         {
           label: 'Select All',
-          accelerator: 'Cmd+A',
-          selector: 'selectAll:'
-        }
+          accelerator: 'CmdOrCtrl+A',
+          role: 'selectall'
+        },
       ]
     },
     {
@@ -126,14 +156,14 @@ function createMenu() {
         },
         {
           label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Command+F',
+          accelerator: 'Ctrl+Cmd+F',
           click: (item, win) => {
             if (win) win.setFullScreen(!win.isFullScreen());
           }
         },
         {
           label: 'Toggle Developer Tools',
-          accelerator: 'Alt+Command+I',
+          accelerator: 'Alt+Cmd+I',
           click: (item, win) => {
             if (win) win.webContents.toggleDevTools();
           }
@@ -144,14 +174,24 @@ function createMenu() {
       label: 'Window',
       role: 'window',
       submenu: [
-        { label: 'Minimize', accelerator: 'CmdOrCtrl+M', role: 'minimize' },
-        { label: 'Close', accelerator: 'CmdOrCtrl+W', role: 'close' },
-        { type: 'separator' },
+        {
+          label: 'Minimize',
+          accelerator: 'CmdOrCtrl+M',
+          role: 'minimize'
+        },
+        {
+          label: 'Close',
+          accelerator: 'CmdOrCtrl+W',
+          role: 'close'
+        },
+        {
+          type: 'separator'
+        },
         {
           label: 'Notes',
           accelerator: 'CmdOrCtrl+1',
           click: (item, win) => {
-            win.webContents.send('navigate', '');
+            win.webContents.send('navigate', 'home');
           },
           type: 'radio',
           checked: true
