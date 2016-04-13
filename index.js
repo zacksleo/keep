@@ -36,9 +36,11 @@ function createMainWindow() {
   const defaults = {
     minWidth: 615,
     icon: `${__dirname}/assets/icon.png`,
-    preload: `${__dirname}/browser.js`,
     title: 'Keep',
-    titleBarStyle: 'hidden-inset'
+    titleBarStyle: 'hidden-inset',
+    webPreferences: {
+      preload: `${__dirname}/browser.js`
+    }
   };
 
   const opts = objectAssign(defaults, conf.all);
