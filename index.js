@@ -6,6 +6,7 @@ const Menu = require('electron').Menu;
 const Configstore = require('configstore');
 const objectAssign = require('object-assign');
 const pkg = require('./package.json');
+
 require('electron-debug')();
 
 const conf = new Configstore(pkg.name, {
@@ -14,42 +15,6 @@ const conf = new Configstore(pkg.name, {
 });
 
 let mainWindow;
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate', () => {
-  if (!mainWindow) {
-    mainWindow = createMainWindow();
-  }
-});
-
-app.on('ready', () => {
-  mainWindow = createMainWindow();
-  createMenu();
-});
-
-function createMainWindow() {
-  const defaults = {
-    minWidth: 615,
-    icon: `${__dirname}/assets/icon.png`,
-    title: 'Keep',
-    titleBarStyle: 'hidden-inset',
-    webPreferences: {
-      preload: `${__dirname}/browser.js`
-    }
-  };
-
-  const opts = objectAssign(defaults, conf.all);
-  const mainWindow = new BrowserWindow(opts);
-  mainWindow.loadURL('https://keep.google.com');
-  mainWindow.on('resize', handleResize);
-  mainWindow.on('closed', handleClosed);
-  return mainWindow;
-}
 
 function handleResize() {
   const isFullScreen = mainWindow.isFullScreen();
@@ -66,6 +31,27 @@ function handleResize() {
 
 function handleClosed() {
   mainWindow = null;
+}
+
+function createMainWindow() {
+  const defaults = {
+    minWidth: 615,
+    icon: `${__dirname}/assets/icon.png`,
+    title: 'Keep',
+    titleBarStyle: 'hidden-inset',
+    webPreferences: {
+      preload: `${__dirname}/browser.js`
+    }
+  };
+
+  const opts = objectAssign(defaults, conf.all);
+  const window = new BrowserWindow(opts);
+
+  window.loadURL('https://keep.google.com');
+  window.on('resize', handleResize);
+  window.on('closed', handleClosed);
+
+  return window;
 }
 
 function createMenu() {
@@ -117,7 +103,7 @@ function createMenu() {
         },
         {
           label: 'Redo',
-          accelerator:'Shift+CmdOrCtrl+Z',
+          accelerator: 'Shift+CmdOrCtrl+Z',
           role: 'redo'
         },
         {
@@ -142,7 +128,7 @@ function createMenu() {
           label: 'Select All',
           accelerator: 'CmdOrCtrl+A',
           role: 'selectall'
-        },
+        }
       ]
     },
     {
@@ -232,7 +218,7 @@ function createMenu() {
           click: () => {
             shell.openExternal('http://github.com/andrepolischuk/keep');
           }
-        },
+        }
       ]
     }
   ];
@@ -240,3 +226,20 @@ function createMenu() {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 }
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (!mainWindow) {
+    mainWindow = createMainWindow();
+  }
+});
+
+app.on('ready', () => {
+  mainWindow = createMainWindow();
+  createMenu();
+});

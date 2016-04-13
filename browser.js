@@ -1,8 +1,9 @@
 'use strict';
 const ipc = require('electron').ipcRenderer;
 
-window.addEventListener('DOMContentLoaded', handleDOMLoaded, false);
-ipc.on('navigate', handleNavigate);
+function isKeep() {
+  return window.location.hostname === 'keep.google.com';
+}
 
 function handleDOMLoaded() {
   if (!isKeep()) return;
@@ -66,10 +67,9 @@ function handleDOMLoaded() {
   `, 0);
 }
 
-function isKeep() {
-  return window.location.hostname === 'keep.google.com';
-}
-
 function handleNavigate(event, hash) {
   window.location.hash = hash;
 }
+
+window.addEventListener('DOMContentLoaded', handleDOMLoaded, false);
+ipc.on('navigate', handleNavigate);
