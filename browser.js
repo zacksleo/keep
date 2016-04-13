@@ -6,32 +6,58 @@ ipc.on('navigate', handleNavigate);
 
 function handleDOMLoaded() {
   if (!isKeep()) return;
-  const searchContainer = document.querySelector('.gb_0d');
-  const accountContainer = document.querySelector('.gb_9a');
-  const faceContainer = document.querySelector('.gb_6a');
-  const faceAnchor = document.querySelector('.gb_4a');
-  const labelChangeButton = document.querySelector('.DyVDA-x00ATb');
-  searchContainer.style.paddingLeft = '80px';
-  accountContainer.style.minWidth = 'auto';
-  labelChangeButton.style.top = '10px';
-  faceContainer.style.paddingLeft = '0';
-  faceContainer.parentNode.style.minWidth = 'auto';
-  faceAnchor.href = '#';
 
-  const elements = [
-    document.querySelector('.gb_Ib'),
-    document.querySelector('.gb_ea'),
-    document.querySelector('.gb_ic'),
-    document.querySelector('.hSRGPd-haAclf'),
-    document.querySelector('.neVct-SX9D7d-ornU0b'),
-    faceContainer.querySelector('.gb_ab'),
-    faceContainer.querySelector('.gb_bb'),
-    faceContainer.querySelector('.gb_cb')
-  ];
+  const wrapper = document.querySelector('#og-nwrapper');
+  const notesLine = document.querySelector('.notes-container > :first-child > :first-child');
+  const searchForm = wrapper.querySelector('form');
 
-  elements.forEach(element => {
-    element.remove();
+  const searchLine = document.createElement('div');
+  searchLine.className = 'search-container';
+  searchLine.appendChild(searchForm);
+
+  const colorLine = document.createElement('div');
+  colorLine.className = 'color-container';
+
+  Array.from(notesLine.childNodes).forEach(node => {
+    colorLine.appendChild(node);
   });
+
+  // colorLine.appendChild(searchLine);
+
+  const fragrment = document.createDocumentFragment();
+  fragrment.appendChild(colorLine);
+
+  wrapper.remove();
+  notesLine.appendChild(fragrment);
+  colorLine.childNodes[3].style.top = '45px';
+
+  document.styleSheets[0].insertRule(`
+    #og-nwrapper {
+      display: none !important;
+    }
+  `, 0);
+
+  document.styleSheets[0].insertRule(`
+    .notes-container {
+      padding-top: 0 !important;
+    }
+  `, 0);
+
+  document.styleSheets[0].insertRule(`
+    .search-container {
+      position: absolute;
+      top: 7px;
+      left: 165px;
+      right: 125px;
+    }
+  `, 0);
+
+  document.styleSheets[0].insertRule(`
+    .color-container {
+      margin-left: 60px;
+      position: relative;
+    }
+  `, 0);
 
   document.styleSheets[0].insertRule(`
     ::-webkit-scrollbar {
