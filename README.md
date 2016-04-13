@@ -1,4 +1,4 @@
-# keep
+# keep [![Build Status][travis-image]][travis-url]
 
 > Desktop app for [Google Keep][google-keep] packaged with [Electron][electron]
 
@@ -27,6 +27,9 @@ npm run darwin
 ## License
 
 [UNLICENSE][unlicense]
+
+[travis-url]: https://travis-ci.org/andrepolischuk/keep
+[travis-image]: https://travis-ci.org/andrepolischuk/keep.svg?branch=master
 
 [google-keep]: https://keep.google.com
 [electron]: http://electron.atom.io
