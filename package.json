@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "start": "electron .",
-    "darwin": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=x64 --version=$npm_package_electronVersion --icon=assets/icon.icns",
+    "build:darwin": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=darwin --arch=all --version=$npm_package_electronVersion --icon=assets/icon.icns",
+    "build:linux": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=linux --arch=all --version=$npm_package_electronVersion --icon=assets/icon.png",
+    "build:windows": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --platform=win32 --arch=all --version=$npm_package_electronVersion --icon=assets/icon.ico",
     "test": "eslint ."
   },
   "repository": {

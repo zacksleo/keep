@@ -18,10 +18,12 @@ npm start
 
 ## Build
 
-Build the Mac OS X version:
+Build the application for specified platform:
 
 ```sh
-npm run darwin
+npm run build:darwin
+npm run build:linux
+npm run build:windows
 ```
 
 ## License
