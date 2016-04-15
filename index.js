@@ -39,11 +39,11 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (!mainWindow) {
-    mainWindow = createMainWindow(config, { handleResize, handleClosed });
+    mainWindow = createMainWindow(config, handleResize, handleClosed);
   }
 });
 
 app.on('ready', () => {
-  mainWindow = createMainWindow(config, { handleResize, handleClosed });
+  mainWindow = createMainWindow(config, handleResize, handleClosed);
   createMainMenu();
 });

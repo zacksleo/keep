@@ -3,7 +3,7 @@ const join = require('path').join;
 const objectAssign = require('object-assign');
 const BrowserWindow = require('electron').BrowserWindow;
 
-module.exports = function createMainWindow(config, { handleResize, handleClosed }) {
+module.exports = function createMainWindow(config, handleResize, handleClosed) {
   const defaults = {
     minWidth: 615,
     icon: join(__dirname, '../assets/icon.png'),
