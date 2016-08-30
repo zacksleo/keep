@@ -1,29 +1,16 @@
 'use strict';
 const app = require('electron').app;
-const Configstore = require('configstore');
-const pkg = require('./package.json');
+const config = require('./src/config');
 const createMainMenu = require('./src/menu');
 const createMainWindow = require('./src/window');
 
 require('electron-debug')();
 
-const config = new Configstore(pkg.name, {
-  height: 768,
-  width: 1024
-});
-
 let mainWindow;
 
 function handleResize() {
-  const isFullScreen = mainWindow.isFullScreen();
-  const bounds = mainWindow.getBounds();
-
-  if (isFullScreen) {
-    config.set('fullscreen', true);
-  } else {
-    config.set('height', bounds.height);
-    config.set('width', bounds.width);
-    config.del('fullscreen');
+  if (!mainWindow.isFullScreen()) {
+    config.set('lastWindowState', mainWindow.getBounds());
   }
 }
 
@@ -39,11 +26,11 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (!mainWindow) {
-    mainWindow = createMainWindow(config, handleResize, handleClosed);
+    mainWindow = createMainWindow(handleResize, handleClosed);
   }
 });
 
 app.on('ready', () => {
-  mainWindow = createMainWindow(config, handleResize, handleClosed);
+  mainWindow = createMainWindow(handleResize, handleClosed);
   createMainMenu();
 });
