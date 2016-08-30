@@ -2,8 +2,8 @@
 const app = require('electron').app;
 const Configstore = require('configstore');
 const pkg = require('./package.json');
-const createMainMenu = require('./src/main-menu');
-const createMainWindow = require('./src/main-window');
+const createMainMenu = require('./src/menu');
+const createMainWindow = require('./src/window');
 
 require('electron-debug')();
 
