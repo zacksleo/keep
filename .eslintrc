@@ -1,11 +1,17 @@
 {
-  "extends": "airbnb/base",
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "browser": true
+  },
   "rules": {
     "comma-dangle": ["error", "never"],
     "jsx-quotes": ["error", "prefer-single"],
-    "array-bracket-spacing": ["error", "always"]
+    "array-bracket-spacing": ["error", "always"],
+    "strict": "off",
+    "import/no-extraneous-dependencies": "off"
   },
   "plugins": [
-    "require-path-exists"
+    "import"
   ]
 }
