@@ -21,7 +21,7 @@ npm start
 Build the application for specified platform:
 
 ```sh
-npm run build:darwin
+npm run build:macos
 npm run build:linux
 npm run build:windows
 ```
