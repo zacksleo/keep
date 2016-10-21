@@ -2,9 +2,9 @@
 const app = require('electron').app;
 const ipc = require('electron').ipcMain;
 const shell = require('electron').shell;
-const config = require('./src/config');
-const createMainMenu = require('./src/menu');
-const createMainWindow = require('./src/window');
+const config = require('./config');
+const createMainMenu = require('./menu');
+const createMainWindow = require('./window');
 
 require('electron-debug')();
 
