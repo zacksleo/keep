@@ -1,5 +1,7 @@
 'use strict';
 const app = require('electron').app;
+const ipc = require('electron').ipcMain;
+const shell = require('electron').shell;
 const config = require('./src/config');
 const createMainMenu = require('./src/menu');
 const createMainWindow = require('./src/window');
@@ -33,4 +35,9 @@ app.on('activate', () => {
 app.on('ready', () => {
   mainWindow = createMainWindow(handleResize, handleClosed);
   createMainMenu();
+});
+
+ipc.on('clicklink', (event, url) => {
+  event.preventDefault();
+  shell.openExternal(url);
 });
