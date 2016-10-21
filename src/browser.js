@@ -8,30 +8,6 @@ function isKeep() {
 function handleDOMLoaded() {
   if (!isKeep()) return;
 
-  const wrapper = document.querySelector('#og-nwrapper');
-  const notesLine = document.querySelector('.notes-container > :first-child > :first-child');
-  const searchForm = wrapper.querySelector('form');
-
-  const searchLine = document.createElement('div');
-  searchLine.className = 'search-container';
-  searchLine.appendChild(searchForm);
-
-  const colorLine = document.createElement('div');
-  colorLine.className = 'color-container';
-
-  Array.from(notesLine.childNodes).forEach(node => {
-    colorLine.appendChild(node);
-  });
-
-  // colorLine.appendChild(searchLine);
-
-  const fragrment = document.createDocumentFragment();
-  fragrment.appendChild(colorLine);
-
-  wrapper.remove();
-  notesLine.appendChild(fragrment);
-  colorLine.childNodes[3].style.top = '45px';
-
   document.styleSheets[0].insertRule(`
     #og-nwrapper {
       display: none !important;
