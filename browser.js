@@ -9,8 +9,16 @@ function handleDOMLoaded() {
   if (!isKeep()) return;
 
   document.styleSheets[0].insertRule(`
-    #og-nwrapper {
-      display: none !important;
+    #ognwrapper {
+      -webkit-app-region: drag;
+    }
+  `, 0);
+
+  document.styleSheets[0].insertRule(`
+    #ognwrapper form,
+    #ognwrapper [role="menu"],
+    #ognwrapper [role="button"] {
+      -webkit-app-region: no-drag;
     }
   `, 0);
 
