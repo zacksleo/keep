@@ -2,6 +2,8 @@
 
 > Desktop app for [Google Keep][google-keep] packaged with [Electron][electron]
 
+![](screenshot.png)
+
 ## Install
 
 ```sh
