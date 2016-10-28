@@ -5,28 +5,40 @@ function isKeep() {
   return window.location.hostname === 'keep.google.com';
 }
 
+function injectCss(rule) {
+  document.styleSheets[0].insertRule(rule, 0);
+}
+
 function handleDOMLoaded() {
   if (!isKeep()) return;
 
-  document.styleSheets[0].insertRule(`
-    #ognwrapper {
-      -webkit-app-region: drag;
-    }
-  `, 0);
+  if (process.platform === 'darwin') {
+    injectCss(`
+      #ognwrapper {
+        -webkit-app-region: drag;
+      }
+    `);
 
-  document.styleSheets[0].insertRule(`
-    #ognwrapper form,
-    #ognwrapper [role="menu"],
-    #ognwrapper [role="button"] {
-      -webkit-app-region: no-drag;
-    }
-  `, 0);
+    injectCss(`
+      #ognwrapper form,
+      #ognwrapper [role="menu"],
+      #ognwrapper [role="button"] {
+        -webkit-app-region: no-drag;
+      }
+    `);
 
-  document.styleSheets[0].insertRule(`
+    injectCss(`
+      #ognwrapper > :first-child > :nth-child(2) {
+        padding-left: 75px;
+      }
+    `);
+  }
+
+  injectCss(`
     ::-webkit-scrollbar {
       display: none !important;
     }
-  `, 0);
+  `);
 }
 
 function handleClick(event) {
