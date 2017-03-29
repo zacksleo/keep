@@ -14,7 +14,7 @@
     "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^/(dist|assets)$' --platform=darwin --arch=x64 --icon=assets/icon.icns --app-bundle-id=com.andrepolischuk.keep && cd dist/Keep-darwin-x64 && zip -ryXq9 ../Keep-macos-${npm_package_version}.zip Keep.app",
     "build:linux": "electron-packager . --overwrite --out=dist --ignore='^/(dist|assets)$' --platform=linux --arch=x64 --icon=assets/icon.png --app-bundle-id=com.andrepolischuk.keep && cd dist/Keep-linux-x64 && zip -ryq9 ../Keep-linux-${npm_package_version}.zip *",
     "build:windows": "electron-packager . --overwrite --asar --out=dist --ignore='^/(dist|assets)$' --platform=win32 --arch=ia32 --icon=assets/icon.ico --version-string.ProductName=$npm_package_productName && cd dist/Keep-win32-ia32 && zip -ryq9 ../Keep-windows-${npm_package_version}.zip *",
-    "test": "eslint ."
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -39,8 +39,6 @@
   "devDependencies": {
     "electron": "^1.4.4",
     "electron-packager": "^8.1.0",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^5.0.3",
-    "eslint-plugin-import": "^1.14.0"
+    "standard": "^9.0.2"
   }
 }

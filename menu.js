@@ -1,9 +1,9 @@
-'use strict';
-const app = require('electron').app;
-const Menu = require('electron').Menu;
-const shell = require('electron').shell;
+'use strict'
+const app = require('electron').app
+const Menu = require('electron').Menu
+const shell = require('electron').shell
 
-module.exports = function createMainMenu() {
+module.exports = function createMainMenu () {
   const template = [
     {
       label: 'Keep',
@@ -37,7 +37,7 @@ module.exports = function createMainMenu() {
           label: 'Quit',
           accelerator: 'Cmd+Q',
           click: () => {
-            app.quit();
+            app.quit()
           }
         }
       ]
@@ -87,21 +87,21 @@ module.exports = function createMainMenu() {
           label: 'Reload',
           accelerator: 'CmdOrCtrl+R',
           click: (item, win) => {
-            if (win) win.reload();
+            if (win) win.reload()
           }
         },
         {
           label: 'Toggle Full Screen',
           accelerator: 'Ctrl+Cmd+F',
           click: (item, win) => {
-            if (win) win.setFullScreen(!win.isFullScreen());
+            if (win) win.setFullScreen(!win.isFullScreen())
           }
         },
         {
           label: 'Toggle Developer Tools',
           accelerator: 'Alt+Cmd+I',
           click: (item, win) => {
-            if (win) win.webContents.toggleDevTools();
+            if (win) win.webContents.toggleDevTools()
           }
         }
       ]
@@ -127,7 +127,7 @@ module.exports = function createMainMenu() {
           label: 'Notes',
           accelerator: 'CmdOrCtrl+1',
           click: (item, win) => {
-            win.webContents.send('navigate', 'home');
+            win.webContents.send('navigate', 'home')
           },
           type: 'radio',
           checked: true
@@ -136,7 +136,7 @@ module.exports = function createMainMenu() {
           label: 'Reminders',
           accelerator: 'CmdOrCtrl+2',
           click: (item, win) => {
-            win.webContents.send('navigate', 'reminders');
+            win.webContents.send('navigate', 'reminders')
           },
           type: 'radio'
         },
@@ -144,7 +144,7 @@ module.exports = function createMainMenu() {
           label: 'Archive',
           accelerator: 'CmdOrCtrl+3',
           click: (item, win) => {
-            win.webContents.send('navigate', 'archive');
+            win.webContents.send('navigate', 'archive')
           },
           type: 'radio'
         },
@@ -152,7 +152,7 @@ module.exports = function createMainMenu() {
           label: 'Trash',
           accelerator: 'CmdOrCtrl+4',
           click: (item, win) => {
-            win.webContents.send('navigate', 'trash');
+            win.webContents.send('navigate', 'trash')
           },
           type: 'radio'
         }
@@ -165,13 +165,13 @@ module.exports = function createMainMenu() {
         {
           label: 'View on GitHub',
           click: () => {
-            shell.openExternal('http://github.com/andrepolischuk/keep');
+            shell.openExternal('http://github.com/andrepolischuk/keep')
           }
         }
       ]
     }
-  ];
+  ]
 
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
-};
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+}
