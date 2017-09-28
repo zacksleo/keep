@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/andrepolischuk/keep",
   "dependencies": {
-    "electron-config": "^0.2.1",
+    "electron-config": "^1.0.0",
     "electron-debug": "^1.0.1"
   },
   "devDependencies": {
     "electron": "^1.4.4",
-    "electron-packager": "^8.1.0",
-    "standard": "^9.0.2"
+    "electron-packager": "^9.1.0",
+    "standard": "^10.0.3"
   }
 }
