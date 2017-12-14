@@ -4,29 +4,26 @@
 
 ![](screenshot.png)
 
-## Install
+## Usage
+
+[Download the latest release!](https://github.com/andrepolischuk/keep/releases/latest)
+
+## Contribute
+
+Fork this repository, clone to your local device and install dependencies:
 
 ```sh
-git clone https://github.com/andrepolischuk/keep
-cd keep
 npm install
+npm start
 ```
 
-If you use Ubuntu or Debian, you also may need to install `nodejs-legacy` that creates `node` symlink.
+If you use Ubuntu or Debian, you also may need to install `nodejs-legacy` that creates `node` symlink:
 
 ```sh
 sudo apt-get install nodejs-legacy
 ```
 
-## Run
-
-```sh
-npm start
-```
-
-## Build
-
-Build the application for specified platform:
+You can pack application for specified platform:
 
 ```sh
 npm run build:macos
