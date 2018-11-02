@@ -12,9 +12,9 @@ module.exports = function createMainWindow (handleResize, handleClosed) {
     y: lastWindowState.y,
     width: lastWindowState.width,
     height: lastWindowState.height,
-    icon: join(__dirname, 'assets/icon.png'),
+    icon: join(__dirname, '../build/icon.png'),
     title: 'Keep',
-    titleBarStyle: 'hidden-inset',
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       preload: `${__dirname}/browser.js`
     }

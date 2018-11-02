@@ -2,7 +2,7 @@
 
 > Desktop app for [Google Keep][google-keep] packaged with [Electron][electron]
 
-![](screenshot.png)
+![](media/screenshot.png)
 
 ## Usage
 
@@ -21,14 +21,6 @@ If you use Ubuntu or Debian, you also may need to install `nodejs-legacy` that c
 
 ```sh
 sudo apt-get install nodejs-legacy
-```
-
-You can pack application for specified platform:
-
-```sh
-npm run build:macos
-npm run build:linux
-npm run build:windows
 ```
 
 ## License
