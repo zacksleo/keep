@@ -16,11 +16,11 @@ module.exports = function createMainWindow (handleResize, handleClosed) {
     title: 'Keep',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
-      preload: `${__dirname}/browser.js`
+      preload: `${__dirname}/browser.js`,
     }
   })
 
-  window.loadURL('https://keep.google.com')
+  window.loadURL('https://keep.google.com', {userAgent: 'Chrome'})
   window.on('resize', handleResize)
   window.on('closed', handleClosed)
 
