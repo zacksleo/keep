@@ -16,7 +16,7 @@ module.exports = function createMainWindow (handleResize, handleClosed) {
     title: 'Keep',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
-      preload: `${__dirname}/browser.js`,
+      preload: `${__dirname}/browser.js`
     }
   })
 
