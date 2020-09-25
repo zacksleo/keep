@@ -48,7 +48,8 @@
   "build": {
     "appId": "com.andrepolischuk.keep",
     "files": [
-      "**/*"
+      "**/*",
+      "build/icon.*"
     ],
     "mac": {
       "category": "public.app-category.productivity",
